@@ -4,23 +4,26 @@ import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
 
 export default function App() {
   return (
-    <View style={styles.container}>
+    <View>
+    <Text style={styles.welcomeText}>welcome to my app</Text>
+
       <Text>welcome to my app</Text>
       <Text>enter your name </Text>
       <TextInput placeholder="firstName"/>
       <Text>Enter your surname</Text>
       <TextInput placeholder="surname"/>
       <Button title="Add user"/>
-      <StatusBar style="auto" />
+      
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#c73939',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+  welcomeText: {
+    paddingTop: 45,
+    color: 'orange',
+    fontWeight: 'bold',
+    fontSize: 30,
+    textAlign: 'center'
+  }
 });
