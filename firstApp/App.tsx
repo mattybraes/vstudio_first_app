@@ -11,6 +11,7 @@ export default function App() {
       <image style={styles.mainImage}/>
     
   <Text style={styles.welcomeText}>welcome to my app</Text>
+  <View style={styles.inputFlex}></View>
 
       <Text>welcome to my app</Text>
       <Text>enter your name </Text>
@@ -18,6 +19,7 @@ export default function App() {
       <Text>Enter your surname</Text>
       <TextInput placeholder="surname"/>
       <Button title="Add user"/>
+
       
     </View>
   );
@@ -44,6 +46,14 @@ mainImage: {
   width: 200,
   paddingTop: 25,
   alignItems: 'center'
+},
+
+
+imputFlex: {
+  flexDirection: 'row',
+  marginTop: 25,
+  justifyContent: 'space-evenly'
+
 }
 
 
