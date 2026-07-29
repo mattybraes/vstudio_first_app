@@ -1,11 +1,15 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button, Image } from 'react-native';
 
 
 export default function App() {
   return (
     <View>
-    <Text style={styles.welcomeText}>welcome to my app</Text>
+
+
+      <Image source={require('./images/norbit.jpeg')}/>
+    
+  <Text style={styles.welcomeText}>welcome to my app</Text>
 
       <Text>welcome to my app</Text>
       <Text>enter your name </Text>
