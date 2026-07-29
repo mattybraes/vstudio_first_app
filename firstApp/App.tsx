@@ -8,6 +8,7 @@ export default function App() {
 
 
       <Image source={require('./images/norbit.jpeg')}/>
+      <image style={styles.mainImage}/>
     
   <Text style={styles.welcomeText}>welcome to my app</Text>
 
@@ -36,6 +37,13 @@ enterTxt:{
 
 userInputText: {
   borderBottomWidth: 1
+},
+
+mainImage: {
+  height: 250,
+  width: 200,
+  paddingTop: 25,
+  alignItems: 'center'
 }
 
 
