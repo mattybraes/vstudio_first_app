@@ -25,5 +25,18 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 30,
     textAlign: 'center'
-  }
+  },
+enterTxt:{
+  fontWeight:'bold'
+},
+
+userInputText: {
+  borderBottomWidth: 1
+}
+
+
+
+
+
+
 });
