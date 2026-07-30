@@ -2,8 +2,16 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, TextInput, Button, Image } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import {useState} from 'react'
 
 export default function App() {
+const [Name,setName] = useState('');
+const [Surname, setSurname] = useState('');
+
+console.log("App is running!")
+
+
+
   return (
     <View>
 
@@ -14,12 +22,28 @@ export default function App() {
   <Text style={styles.welcomeText}>welcome to my app</Text>
   <View style={styles.inputFlex}></View>
 
+  
+
       <Text>welcome to my app</Text>
       <Text>enter your name </Text>
-      <TextInput placeholder="firstName"/>
+      <TextInput placeholder="firstName"
+      onChangeText={newText => setName(newText)}/>
       <Text>Enter your surname</Text>
-      <TextInput placeholder="surname"/>
-      <Button title="Add user"/>
+      <TextInput placeholder="surname"
+      onChangeText={newText => setSurname(newText)}/>
+      <Button title="Add user"
+        onPress={() => {
+          console.log("Name: " + Name +
+            "Surname: " + Surname)
+
+          
+
+
+
+
+
+
+        }}/>
 
       
     </View>
