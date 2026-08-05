@@ -111,10 +111,15 @@ function ViewDetails( {navigation, route}: ViewDetailsProps) {
       <Text>Name: {NameGet} Surname: {SurnameGet}</Text>
     </View>
   )
+};
+
+interface FadeInViewProps{
+  children: ReactNode;
+  style?: StyleProp<ViewStyle>
 }
 
 
-const FadeInView = (props) => {
+const FadeInView = ({children, style}: FadeInViewProps) => {
   const fadeAnim = useRef(new Animated.Value(0)).current
   useEffect(() => {
     Animated.timing(
@@ -129,11 +134,11 @@ const FadeInView = (props) => {
 
   return(
 <Animated.View style={{
-  ...props.style,
+  ...(style as object),
 opacity: fadeAnim,
 
 }}>
-  {props.children}
+  {children}
   </Animated.View>
 
   )
