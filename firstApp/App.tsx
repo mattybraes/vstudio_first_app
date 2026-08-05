@@ -68,7 +68,7 @@ function MainScreen({navigation}: MainScreenProps) {
     <View style={styles.inputFlex}>
       <Text style={styles.labelText}>Enter your name:</Text>
       <TextInput style={styles.InputText} 
-                        placeholder="Jane" 
+                        placeholder="mary" 
                         autoCapitalize="words" 
                         autoComplete="name" 
                         keyboardType="default"
@@ -78,7 +78,7 @@ function MainScreen({navigation}: MainScreenProps) {
     <View style={styles.inputFlex}>
       <Text style={styles.labelText}>Enter your surname:</Text>
       <TextInput style={styles.InputText} 
-                 placeholder="Arhtur" 
+                 placeholder="matthew" 
                  autoCapitalize="words" 
                  autoComplete="name-family" 
                  keyboardType="default"
