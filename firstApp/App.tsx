@@ -1,103 +1,145 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, TextInput, Button, Image } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button, Image, SafeAreaView, ScrollView, Animated} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import {useState} from 'react'
-
-export default function App() {
-
-  const Stack = createNativeStackNavigator();
-
-
-errors stared with the cutting 
-now adding a stack inside of the navigation container 
-now we have to add this <stack.screen name="home" component={mainScreen}
+import { useState, useRef, useEffect } from 'react';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 
 
-
-  const [Name,setName] = useState('');
-const [Surname, setSurname] = useState('');
-
-console.log("App is running!")
-
-
-
-  return (
-   <NavigationContainer></NavigationContainer>
-    <View>
-
-
-      <Image source={require('./images/norbit.jpeg')}/>
-      <image style={styles.mainImage}/>
-    
-  <Text style={styles.welcomeText}>welcome to my app</Text>
-  <View style={styles.inputFlex}></View>
-
+ type RootStackParamList = {
+   Home: undefined;
+   ViewDetails: {
+    NameSend: string;
+    SurnameSend: string; 
+  };
+ };
   
 
-      <Text>welcome to my app</Text>
-      <Text>enter your name </Text>
-      <TextInput placeholder="firstName"
-      onChangeText={newText => setName(newText)}/>
-      <Text>Enter your surname</Text>
-      <TextInput placeholder="surname"
-      onChangeText={newText => setSurname(newText)}/>
-      <Button title="Add user"
-        onPress={() => {
-          console.log("Name: " + Name +
-            "Surname: " + Surname)
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
-          
+type MainScreenProps = NativeStackScreenProps<
+RootStackParamList,
+'Home'
+>;
 
+type ViewDetailsProps = NativeStackScreenProps<
+RootStackParamList,
+'ViewDetails'
+>;
 
+export default function App() {
+return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={MainScreen}/>
+        <Stack.Screen name="ViewDetails" component={ViewDetails}/>
+      </Stack.Navigator>  
+    </NavigationContainer>
+  );
+  
+};
 
+function MainScreen({navigation}: MainScreenProps) {
 
+  <Button title="Add User"
+          onPress={() => {
+            navigation.navigate('ViewDetails', {
+              NameSend: Name,
+              SurnameSend: Surname
+            });
+          }}
+        />
 
+  const [Name, setName] = useState('');
+  const [Surname, setSurname] = useState('');
 
-        }}/>
+  console.log("App is running");
+  return (
+
+  <View>
+<SafeAreaView>
+  <ScrollView>
+
+      <Image style={styles.mainImage} 
+      source={require('./_images/minecraft.jpg')}/>
+      <Text style={styles.welcomeText}>Welcome to my App!</Text>
+
+    <View style={styles.inputFlex}>
+      <Text style={styles.labelText}>Enter your name:</Text>
+      <TextInput style={styles.InputText} 
+                        placeholder="Jane" 
+                        autoCapitalize="words" 
+                        autoComplete="name" 
+                        keyboardType="default"
+                        onChangeText={newText => setName(newText)}/>
+    </View>  
+
+    <View style={styles.inputFlex}>
+      <Text style={styles.labelText}>Enter your surname:</Text>
+      <TextInput style={styles.InputText} 
+                 placeholder="Arhtur" 
+                 autoCapitalize="words" 
+                 autoComplete="name-family" 
+                 keyboardType="default"
+                 onChangeText={newText => setSurname(newText)}/>
+    </View>
+
+    
 
       
-    </View>
- </NavigationContainer>
-);
 
+      <StatusBar style="auto" />
+      
+      </ScrollView>
+       </SafeAreaView>
+    </View>
+  );
+}
+
+
+
+function ViewDetails( {navigation, route}: ViewDetailsProps) {
+  const NameGet = route.params.NameSend;
+  const SurnameGet = route.params.SurnameSend;
+
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>Name: {NameGet} Surname: {SurnameGet}</Text>
+    </View>
+  )
 }
 
 const styles = StyleSheet.create({
   welcomeText: {
-    paddingTop: 45,
-    color: 'orange',
-    fontWeight: 'bold',
-    fontSize: 30,
-    textAlign: 'center'
+   paddingTop: 70,
+   color: 'purple',
+   fontWeight: 'bold',
+   fontSize: 50,
+   textAlign: 'center'
   },
-enterTxt:{
-  fontWeight:'bold'
+
+labelText: {
+  fontWeight: 'bold',
 },
 
-userInputText: {
-  borderBottomWidth: 1
+InputText:{
+  borderBottomWidth: 1,
+
 },
 
 mainImage: {
-  height: 250,
-  width: 200,
-  paddingTop: 25,
-  alignItems: 'center'
+  height: 350,
+  width: 400,
+  paddingTop: 60,
+  justifyContent: 'center',
+  alignItems: 'center',
 },
-
 
 inputFlex: {
   flexDirection: 'row',
   marginTop: 25,
-  justifyContent: 'space-evenly'
-
+  justifyContent: 'space-evenly', 
 }
-
-
-
-
-
 
 });
