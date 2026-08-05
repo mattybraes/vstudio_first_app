@@ -5,7 +5,18 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import {useState} from 'react'
 
 export default function App() {
-const [Name,setName] = useState('');
+
+  const Stack = createNativeStackNavigator();
+
+
+errors stared with the cutting 
+now adding a stack inside of the navigation container 
+now we have to add this <stack.screen name="home" component={mainScreen}
+
+
+
+
+  const [Name,setName] = useState('');
 const [Surname, setSurname] = useState('');
 
 console.log("App is running!")
@@ -13,6 +24,7 @@ console.log("App is running!")
 
 
   return (
+   <NavigationContainer></NavigationContainer>
     <View>
 
 
@@ -47,7 +59,9 @@ console.log("App is running!")
 
       
     </View>
-  );
+ </NavigationContainer>
+);
+
 }
 
 const styles = StyleSheet.create({
