@@ -1,8 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, TextInput, Button, Image, SafeAreaView, ScrollView, Animated} from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button, Image, SafeAreaView, ScrollView, Animated, ViewStyle, StyleProp} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, ReactNode } from 'react';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 
@@ -62,9 +62,11 @@ function MainScreen({navigation}: MainScreenProps) {
   <ScrollView>
 
       <Image style={styles.mainImage} 
-      source={require('./_images/minecraft.jpg')}/>
+      source={require('./_images/norbit.jpeg')}/>
       <Text style={styles.welcomeText}>Welcome to my App!</Text>
 
+
+<FadeInView>
     <View style={styles.inputFlex}>
       <Text style={styles.labelText}>Enter your name:</Text>
       <TextInput style={styles.InputText} 
@@ -84,6 +86,7 @@ function MainScreen({navigation}: MainScreenProps) {
                  keyboardType="default"
                  onChangeText={newText => setSurname(newText)}/>
     </View>
+    </FadeInView>
 
     
 
@@ -108,6 +111,33 @@ function ViewDetails( {navigation, route}: ViewDetailsProps) {
       <Text>Name: {NameGet} Surname: {SurnameGet}</Text>
     </View>
   )
+}
+
+
+const FadeInView = (props) => {
+  const fadeAnim = useRef(new Animated.Value(0)).current
+  useEffect(() => {
+    Animated.timing(
+      fadeAnim,
+      {
+        toValue: 1,
+        duration: 4000,
+        useNativeDriver: false
+      }
+    ).start();
+  }, [fadeAnim])
+
+  return(
+<Animated.View style={{
+  ...props.style,
+opacity: fadeAnim,
+
+}}>
+  {props.children}
+  </Animated.View>
+
+  )
+     
 }
 
 const styles = StyleSheet.create({
