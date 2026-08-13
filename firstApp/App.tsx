@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, TextInput, Button, Image, ScrollView, SafeAreaView, Animated, ViewStyle, StyleProp} from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button, Image, ScrollView, SafeAreaView, Animated, ViewStyle, StyleProp, ImageSourcePropType} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator, NativeStackScreenProps } from '@react-navigation/native-stack';
 import { useState, useRef, useEffect, ReactNode } from 'react';
@@ -119,7 +119,7 @@ function ViewDetails( {navigation, route}: ViewDetailsProps) {
   const NameGet = route.params.NameSend;
   const SurnameGet = route.params.SurnameSend;
   const [selectedValue, setSelectValue] = useState('0')
-  const [ImageBlock, setImage] = useState(source=(""))
+  const [ImageBlock, setImage] = useState<ImageSourcePropType | undefined>(undefined);
 
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -178,6 +178,24 @@ function ViewDetails( {navigation, route}: ViewDetailsProps) {
               </Text>
               <Button title="Click here"
               onPress={() => {
+                switch(selectedValue){
+                  case "1"
+                 setImage(require('./_images/kotlin.png'));
+                 break;
+
+                 case "2"
+                 setImage(require('./_images/vscode_picture.png'));
+                 break;
+
+                 case "3"
+                  setImage(require('./_images/reactnative_pic.png'));
+                  break;
+                  default:
+                    setImage(undefined);
+
+
+
+                }
 
 
               }}
