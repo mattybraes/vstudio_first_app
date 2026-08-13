@@ -319,5 +319,21 @@ radioGroup: {
   },
   shadowOpacity: 0.25,
   shadowRadius: 3
+},
+
+
+container: {
+
+},
+
+viewImage: {
+  width: 350,
+  height: 350,
+  alignContent: 'center'
+  
 }
+
+
+
 });
+
